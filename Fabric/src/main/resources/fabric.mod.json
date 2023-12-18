@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "id": "respawndelay",
-  "version": "4.3",
+  "version": "4.4",
 
   "name": "Respawn Delay",
   "description": "Players enter spectator mode on death for a configurable amount of time.",
   "authors": [ "Rick South" ],
   "contact": {
-    "homepage": "https://curseforge.com/minecraft/mc-mods/respawn-delay",
-    "sources": "https://github.com/ricksouth/serilum-mc-mod-sources/tree/main/sources/Respawn%20Delay",
-    "issues": "https://github.com/ricksouth/serilum-mc-mods/labels/Mod:%20Respawn%20Delay"
+    "homepage": "https://serilum.com/mod/respawn-delay",
+    "sources": "https://github.com/Serilum/Respawn-Delay",
+    "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Respawn%20Delay"
   },
 
   "license": "All Right Reserved",
@@ -23,7 +23,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "collective": ">=7.13"
+    "collective": ">=7.21"
   },
 
   "custom": {
