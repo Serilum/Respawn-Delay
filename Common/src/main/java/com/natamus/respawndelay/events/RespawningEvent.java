@@ -1,6 +1,6 @@
 package com.natamus.respawndelay.events;
 
-import com.natamus.collective.functions.StringFunctions;
+import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.respawndelay.config.ConfigHandler;
 import com.natamus.respawndelay.util.Util;
 import net.minecraft.ChatFormatting;
@@ -55,7 +55,7 @@ public class RespawningEvent {
 		String waitingmessage = ConfigHandler.waitingForRespawnMessage;
 		waitingmessage = waitingmessage.replaceAll("<seconds_left>", seconds + "");
 
-		StringFunctions.sendMessage(serverPlayer, waitingmessage, ChatFormatting.GRAY);
+		MessageFunctions.sendMessage(serverPlayer, waitingmessage, ChatFormatting.GRAY);
 	}
 
 	public static boolean onPlayerDeath(ServerPlayer serverPlayer, DamageSource damageSource, float damageAmount) {
@@ -120,7 +120,7 @@ public class RespawningEvent {
 		Date now = new Date();
 		death_times.put(serverPlayer, now);
 
-		StringFunctions.sendMessage(serverPlayer, ConfigHandler.onDeathMessage, ChatFormatting.DARK_RED);
+		MessageFunctions.sendMessage(serverPlayer, ConfigHandler.onDeathMessage, ChatFormatting.DARK_RED);
 		return false;
 	}
 
