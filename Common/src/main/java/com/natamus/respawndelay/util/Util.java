@@ -1,7 +1,7 @@
 package com.natamus.respawndelay.util;
 
 import com.natamus.collective.functions.PlayerFunctions;
-import com.natamus.collective.functions.StringFunctions;
+import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.respawndelay.config.ConfigHandler;
 import com.natamus.respawndelay.events.RespawningEvent;
 
@@ -24,6 +24,6 @@ public class Util {
 			serverplayer.teleportTo(spawnpos.getX(), spawnpos.getY(), spawnpos.getZ());
 		}
 		
-		StringFunctions.sendMessage(serverplayer, ConfigHandler.onRespawnMessage, ChatFormatting.DARK_GREEN);
+		MessageFunctions.sendMessage(serverplayer, ConfigHandler.onRespawnMessage, ChatFormatting.DARK_GREEN);
 	}
 }

@@ -1,7 +1,7 @@
 package com.natamus.respawndelay.cmds;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.natamus.collective.functions.StringFunctions;
+import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.respawndelay.events.RespawningEvent;
 import com.natamus.respawndelay.util.Util;
 import net.minecraft.ChatFormatting;
@@ -30,7 +30,7 @@ public class CommandRespawnall {
 					s = "s";
 				}
 				
-				StringFunctions.sendMessage(source, "Successfully made " + amountrespawned + " player" + s + " respawn.", ChatFormatting.DARK_GREEN);
+				MessageFunctions.sendMessage(source, "Successfully made " + amountrespawned + " player" + s + " respawn.", ChatFormatting.DARK_GREEN);
 				return 1;
 			})
 		);
