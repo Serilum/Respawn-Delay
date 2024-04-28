@@ -8,8 +8,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.TickEvent.Phase;
-import net.neoforged.neoforge.event.TickEvent.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,10 +22,10 @@ public class NeoForgeRespawningEvent {
 	}
 
 	@SubscribeEvent
-	public static void onPlayerTick(PlayerTickEvent e) {
-		Player player = e.player;
+	public static void onPlayerTick(PlayerTickEvent.Pre e) {
+		Player player = e.getEntity();
 		Level level = player.level();
-		if (level.isClientSide || e.phase != Phase.START) {
+		if (level.isClientSide) {
 			return;
 		}
 

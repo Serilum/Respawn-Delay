@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="respawndelay"
-version="4.5"
+version="4.6"
 displayName="Respawn Delay"
 displayURL="https://serilum.com/mod/respawn-delay"
 authors="Rick South"
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.respawndelay]]
     modId="collective"
     mandatory=true
-    versionRange="[7.52,)"
+    versionRange="[7.54,)"
     ordering="NONE"
     side="BOTH"
 
