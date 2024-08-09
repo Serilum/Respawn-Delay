@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "respawndelay",
+  "version": "4.7",
+
+  "name": "Respawn Delay",
+  "description": "Players enter spectator mode on death for a configurable amount of time.",
+  "authors": [ "Rick South" ],
+  "contact": {
+    "homepage": "https://serilum.com/mod/respawn-delay",
+    "sources": "https://github.com/Serilum/Respawn-Delay",
+    "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Respawn%20Delay"
+  },
+
+  "license": "All Right Reserved",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": { "main": [ "com.natamus.respawndelay.ModFabric" ], "modmenu": [ "com.natamus.respawndelay.fabric.config.IntegrateModMenu" ] },
+
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": ">=1.21",
+    "java": ">=21",
+    "collective": ">=7.80"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Donate <3" : "https://ricksouth.com/donate"
+      }
+    }
+  },
+
+  "contributors": [
+	  " ",
+	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
+	  " ",
+	  "If you would like to contribute too, check out https://serilum.com/donate.",
+	  " ",
+	  "Membership sponsors:",
+	  " Alister",
+	  " Andrean Olgo",
+	  " aternosorg",
+	  " Cherriesaurus",
+	  " Michael W. S.",
+	  " Nahuel Fernandez",
+	  " Shana Gitnick",
+	  " Tyler Behl"
+  ]
+}
