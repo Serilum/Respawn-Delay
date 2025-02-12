@@ -13,17 +13,15 @@ import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber
 public class ForgeRespawningEvent {
     @SubscribeEvent
-    public void registerCommands(RegisterCommandsEvent e) {
+    public static void registerCommands(RegisterCommandsEvent e) {
     	CommandRespawnall.register(e.getDispatcher());
     }
 
 	@SubscribeEvent
-	public void onPlayerTick(PlayerTickEvent e) {
+	public static void onPlayerTick(PlayerTickEvent e) {
 		Player player = e.player;
 		Level level = player.level();
 		if (level.isClientSide || e.phase != Phase.START) {
@@ -34,7 +32,7 @@ public class ForgeRespawningEvent {
 	}
 
 	@SubscribeEvent
-	public void onPlayerDeath(LivingDeathEvent e) {
+	public static void onPlayerDeath(LivingDeathEvent e) {
 		Entity entity = e.getEntity();
 		Level level = entity.level();
 		if (level.isClientSide) {
@@ -51,13 +49,13 @@ public class ForgeRespawningEvent {
 	}
 
 	@SubscribeEvent
-	public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent e) {
+	public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent e) {
 		Player player = e.getEntity();
 		RespawningEvent.onPlayerLogout(player.level(), player);
 	}
 
 	@SubscribeEvent
-	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent e) {
+	public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent e) {
 		Player player = e.getEntity();
 		RespawningEvent.onPlayerLogin(player.level(), player);
 	}
