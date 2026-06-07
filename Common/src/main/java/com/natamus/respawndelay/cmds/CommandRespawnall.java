@@ -31,7 +31,7 @@ public class CommandRespawnall {
 					s = "s";
 				}
 				
-				MessageFunctions.sendMessage(source, "Successfully made " + amountrespawned + " player" + s + " respawn.", ChatFormatting.DARK_GREEN);
+				MessageFunctions.sendTranslatableMessage(source, "collective.respawndelay.message.successfullymadeplayer", ChatFormatting.DARK_GREEN, amountrespawned);
 				return 1;
 			})
 		);
