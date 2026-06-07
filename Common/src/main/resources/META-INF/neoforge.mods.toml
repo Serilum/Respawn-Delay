@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="respawndelay"
-version="4.8"
+version="5.0"
 displayName="Respawn Delay"
 displayURL="https://serilum.com/mod/respawn-delay"
 authors="Rick South"
@@ -14,7 +14,7 @@ description='''Players enter spectator mode on death for a configurable amount o
 '''
 credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
 
-Alister, Andrean Olgo, aternosorg, Cherriesaurus, David Sanchez, drdog111, Michael W. S., t128, Tyler Behl, XAgent   
+Andrean Olgo, aternosorg, Cherriesaurus, Linda Jansen, Michelle Smith, MWS, Tyler Behl   
 
 If you would like to contribute too, check out https://serilum.com/donate. Appreciate it! <3   
 '''
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.respawndelay]]
     modId="collective"
     type="required"
-    versionRange="[7.91,)"
+    versionRange="[8.25,)"
     ordering="NONE"
     side="BOTH"
 
