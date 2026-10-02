@@ -1,6 +1,6 @@
-package com.natamus.respawndelay;
+package com.serilum.respawndelay;
 
-import com.natamus.respawndelay.config.ConfigHandler;
+import com.serilum.respawndelay.config.ConfigHandler;
 
 public class ModCommon {
 

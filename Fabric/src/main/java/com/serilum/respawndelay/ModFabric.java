@@ -1,11 +1,11 @@
-package com.natamus.respawndelay;
+package com.serilum.respawndelay;
 
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.collective.fabric.callbacks.CollectivePlayerEvents;
-import com.natamus.respawndelay.cmds.CommandRespawnall;
-import com.natamus.respawndelay.events.RespawningEvent;
-import com.natamus.respawndelay.util.Reference;
+import com.serilum.respawndelay.cmds.CommandRespawnall;
+import com.serilum.respawndelay.events.RespawningEvent;
+import com.serilum.respawndelay.util.Reference;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;

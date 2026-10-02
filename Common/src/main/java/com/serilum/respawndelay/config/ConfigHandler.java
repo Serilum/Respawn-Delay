@@ -1,7 +1,7 @@
-package com.natamus.respawndelay.config;
+package com.serilum.respawndelay.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.respawndelay.util.Reference;
+import com.serilum.respawndelay.util.Reference;
 
 import java.util.Arrays;
 import java.util.HashMap;

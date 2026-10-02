@@ -1,9 +1,9 @@
-package com.natamus.respawndelay.cmds;
+package com.serilum.respawndelay.cmds;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.natamus.collective.functions.MessageFunctions;
-import com.natamus.respawndelay.events.RespawningEvent;
-import com.natamus.respawndelay.util.Util;
+import com.serilum.respawndelay.events.RespawningEvent;
+import com.serilum.respawndelay.util.Util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;

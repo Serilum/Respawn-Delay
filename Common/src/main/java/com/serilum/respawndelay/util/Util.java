@@ -1,9 +1,9 @@
-package com.natamus.respawndelay.util;
+package com.serilum.respawndelay.util;
 
 import com.natamus.collective.functions.PlayerFunctions;
 import com.natamus.collective.functions.MessageFunctions;
-import com.natamus.respawndelay.config.ConfigHandler;
-import com.natamus.respawndelay.events.RespawningEvent;
+import com.serilum.respawndelay.config.ConfigHandler;
+import com.serilum.respawndelay.events.RespawningEvent;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

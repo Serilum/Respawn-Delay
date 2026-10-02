@@ -1,10 +1,10 @@
-package com.natamus.respawndelay;
+package com.serilum.respawndelay;
 
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
-import com.natamus.respawndelay.forge.config.IntegrateForgeConfig;
-import com.natamus.respawndelay.forge.events.ForgeRespawningEvent;
-import com.natamus.respawndelay.util.Reference;
+import com.serilum.respawndelay.forge.config.IntegrateForgeConfig;
+import com.serilum.respawndelay.forge.events.ForgeRespawningEvent;
+import com.serilum.respawndelay.util.Reference;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -32,7 +32,7 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-    	MinecraftForge.EVENT_BUS.register(ForgeRespawningEvent.class);
+		MinecraftForge.EVENT_BUS.register(ForgeRespawningEvent.class);
 	}
 
 	private static void setGlobalConstants() {

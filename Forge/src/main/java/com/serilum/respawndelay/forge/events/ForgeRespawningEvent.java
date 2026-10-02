@@ -1,7 +1,7 @@
-package com.natamus.respawndelay.forge.events;
+package com.serilum.respawndelay.forge.events;
 
-import com.natamus.respawndelay.cmds.CommandRespawnall;
-import com.natamus.respawndelay.events.RespawningEvent;
+import com.serilum.respawndelay.cmds.CommandRespawnall;
+import com.serilum.respawndelay.events.RespawningEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -15,10 +15,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ForgeRespawningEvent {
-    @SubscribeEvent
-    public static void registerCommands(RegisterCommandsEvent e) {
-    	CommandRespawnall.register(e.getDispatcher());
-    }
+	@SubscribeEvent
+	public static void registerCommands(RegisterCommandsEvent e) {
+		CommandRespawnall.register(e.getDispatcher());
+	}
 
 	@SubscribeEvent
 	public static void onPlayerTick(PlayerTickEvent e) {

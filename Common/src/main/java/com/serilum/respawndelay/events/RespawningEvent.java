@@ -1,8 +1,8 @@
-package com.natamus.respawndelay.events;
+package com.serilum.respawndelay.events;
 
 import com.natamus.collective.functions.MessageFunctions;
-import com.natamus.respawndelay.config.ConfigHandler;
-import com.natamus.respawndelay.util.Util;
+import com.serilum.respawndelay.config.ConfigHandler;
+import com.serilum.respawndelay.util.Util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

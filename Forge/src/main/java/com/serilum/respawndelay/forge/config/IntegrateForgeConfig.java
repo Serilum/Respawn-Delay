@@ -1,7 +1,7 @@
-package com.natamus.respawndelay.forge.config;
+package com.serilum.respawndelay.forge.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.respawndelay.util.Reference;
+import com.serilum.respawndelay.util.Reference;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 
