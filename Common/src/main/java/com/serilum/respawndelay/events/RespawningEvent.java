@@ -2,6 +2,7 @@ package com.serilum.respawndelay.events;
 
 import com.natamus.collective.functions.MessageFunctions;
 import com.serilum.respawndelay.config.ConfigHandler;
+import com.serilum.respawndelay.util.Reference;
 import com.serilum.respawndelay.util.Util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.server.level.ServerLevel;
@@ -20,9 +21,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class RespawningEvent {
-	public static HashMap<Player, Date> death_times = new HashMap<Player, Date>();
+	public static HashMap<UUID, Date> deathTimes = new HashMap<>();
 
 	public static void onPlayerTick(ServerLevel serverLevel, ServerPlayer serverPlayer) {
 		if (serverPlayer.tickCount % 20 != 0) {
@@ -33,29 +35,29 @@ public class RespawningEvent {
 			return;
 		}
 
-		if (!death_times.containsKey(serverPlayer)) {
+		Date timeDied = deathTimes.get(serverPlayer.getUUID());
+		if (timeDied == null) {
 			return;
 		}
 
-		int respawndelay = ConfigHandler.respawnDelayInSeconds;
-		if (respawndelay < 0) {
+		int respawnDelay = ConfigHandler.respawnDelayInSeconds;
+		if (respawnDelay < 0) {
 			return;
 		}
 
 		Date now = new Date();
-		Date timedied = death_times.get(serverPlayer);
 
-		long ms = (now.getTime()-timedied.getTime());
-		if (ms > respawndelay * 1000L) {
+		long ms = (now.getTime()-timeDied.getTime());
+		if (ms > respawnDelay * 1000L) {
 			Util.respawnPlayer(serverLevel, serverPlayer);
 			return;
 		}
 
-		int seconds = respawndelay - (int)(ms/1000);
-		String waitingmessage = ConfigHandler.waitingForRespawnMessage;
-		waitingmessage = waitingmessage.replaceAll("<seconds_left>", seconds + "");
+		int seconds = respawnDelay - (int)(ms/1000);
+		String waitingMessage = ConfigHandler.waitingForRespawnMessage;
+		waitingMessage = waitingMessage.replaceAll("<seconds_left>", seconds + "");
 
-		MessageFunctions.sendMessage(serverPlayer, waitingmessage, ChatFormatting.GRAY);
+		MessageFunctions.sendMessage(serverPlayer, waitingMessage, ChatFormatting.GRAY);
 	}
 
 	public static boolean onPlayerDeath(ServerPlayer serverPlayer, DamageSource damageSource, float damageAmount) {
@@ -81,6 +83,7 @@ public class RespawningEvent {
 		serverPlayer.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_DEATH));
 		serverPlayer.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_REST));
 		serverPlayer.clearFire();
+		serverPlayer.removeAllEffects();
 
 		Vec3 pvec = serverPlayer.position();
 		if (pvec.y() < ConfigHandler.lowestPossibleYCoordinate) {
@@ -118,7 +121,7 @@ public class RespawningEvent {
 		}
 
 		Date now = new Date();
-		death_times.put(serverPlayer, now);
+		deathTimes.put(serverPlayer.getUUID(), now);
 
 		MessageFunctions.sendMessage(serverPlayer, ConfigHandler.onDeathMessage, ChatFormatting.DARK_RED);
 		return false;
@@ -129,9 +132,17 @@ public class RespawningEvent {
 			return;
 		}
 
-		if (death_times.containsKey(player)) {
-			Util.respawnPlayer(level, (ServerPlayer)player);
+		UUID uuid = player.getUUID();
+		if (!deathTimes.containsKey(uuid)) {
+			return;
 		}
+
+		if (!ConfigHandler.respawnWhenPlayerLogsOut) {
+			return;
+		}
+
+		deathTimes.remove(uuid);
+		player.addTag(Reference.MOD_ID + ".respawn_on_login");
 	}
 
 	public static void onPlayerLogin(Level level, Player player) {
@@ -139,7 +150,17 @@ public class RespawningEvent {
 			return;
 		}
 
-		if (player.isSpectator() && !death_times.containsKey(player)) {
+		boolean loggedOutWhileWaiting = player.removeTag(Reference.MOD_ID + ".respawn_on_login");
+
+		if (!player.isSpectator()) {
+			return;
+		}
+
+		if (deathTimes.containsKey(player.getUUID())) {
+			return;
+		}
+
+		if (loggedOutWhileWaiting || ConfigHandler.respawnWhenPlayerLogsIn) {
 			Util.respawnPlayer(level, (ServerPlayer)player);
 		}
 	}

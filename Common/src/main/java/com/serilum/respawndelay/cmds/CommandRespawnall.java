@@ -8,29 +8,28 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class CommandRespawnall {
 	public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
 		dispatcher.register(Commands.literal("respawnall").requires((iCommandSender) -> iCommandSender.hasPermission(2))
 			.executes((command) -> {
 				CommandSourceStack source = command.getSource();
-				
-				int amountrespawned = 0;
-				Set<Player> spectating_players = RespawningEvent.death_times.keySet();
-				for (Player nextplayer : spectating_players) {
-					Util.respawnPlayer(nextplayer.level(), (ServerPlayer) nextplayer);
-					amountrespawned += 1;
+
+				int amountRespawned = 0;
+				for (UUID uuid : new ArrayList<>(RespawningEvent.deathTimes.keySet())) {
+					ServerPlayer spectatingPlayer = source.getServer().getPlayerList().getPlayer(uuid);
+					if (spectatingPlayer == null) {
+						continue;
+					}
+
+					Util.respawnPlayer(spectatingPlayer.level(), spectatingPlayer);
+					amountRespawned += 1;
 				}
-				
-				String s = "";
-				if (amountrespawned > 1) {
-					s = "s";
-				}
-				
-				MessageFunctions.sendTranslatableMessage(source, "collective.respawndelay.message.successfullymadeplayer", ChatFormatting.DARK_GREEN, amountrespawned);
+
+				MessageFunctions.sendTranslatableMessage(source, "collective.respawndelay.message.successfullymadeplayer", ChatFormatting.DARK_GREEN, amountRespawned);
 				return 1;
 			})
 		);
