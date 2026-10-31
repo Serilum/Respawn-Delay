@@ -6,6 +6,7 @@ import com.natamus.collective.fabric.callbacks.CollectivePlayerEvents;
 import com.serilum.respawndelay.cmds.CommandRespawnall;
 import com.serilum.respawndelay.events.RespawningEvent;
 import com.serilum.respawndelay.util.Reference;
+import com.serilum.respawndelay.util.Util;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
@@ -43,6 +44,9 @@ public class ModFabric implements ModInitializer {
 
 		ServerLivingEntityEvents.ALLOW_DEATH.register((LivingEntity livingEntity, DamageSource damageSource, float damageAmount) -> {
 			if (livingEntity instanceof ServerPlayer) {
+				if (Util.isSavedByTotem((ServerPlayer)livingEntity, damageSource)) {
+					return true;
+				}
 				return RespawningEvent.onPlayerDeath((ServerPlayer)livingEntity, damageSource, damageAmount);
 			}
 			return true;
